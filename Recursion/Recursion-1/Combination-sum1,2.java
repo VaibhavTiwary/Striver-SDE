@@ -26,6 +26,14 @@ class Solution {
     }
 }
 
+// ex: nums = [2,3,6,7], target = 7
+// Path goes: [2] → [2,2] → [2,2,2], now target=1
+// 1 < 2 so if-block not entered, loop continues but skips all (3,6,7)
+// No candidates → loop ends → call returns to parent
+// Parent then does path.remove(...) → backtracks → path becomes [2,2]
+
+
+
 //COmbination-sum 2
 //Note: The solution set must not contain duplicate combinations.
 
