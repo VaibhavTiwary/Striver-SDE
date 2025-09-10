@@ -10,6 +10,23 @@
 // Output: true
 // Explanation: Return true because "leetcode" can be segmented as "leet code".
 
+// Time Complexity
+
+// Number of states:
+// index can be from 0 to n-1 → O(n) states
+
+// Work per state:
+// For each index, you try all end indices i = index .. n-1 → O(n) iterations
+
+// Each substring creation: builder.toString() → O(k), k ≤ n
+
+// Checking words.contains(...) → O(1)
+// So work per state ≈ O(n) for iteration + O(n) for substring → O(n^2)
+
+// 3 Total Complexity
+// O(n ^ 3)
+
+// dp[index] represents whether the substring s[index..] can be segmented using the dictionary.
 class Solution {
     public boolean wordBreak(String s, List<String> wordDict) {
         Set<String> words = new HashSet<>(wordDict);
