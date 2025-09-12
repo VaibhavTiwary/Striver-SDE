@@ -2,7 +2,7 @@
 // The graph is represented as a 2D vector edges[][], where each entry edges[i] = [u, v] denotes an edge from verticex u to v.
 
 
-
+// TC- O(V + E)
 class Solution {
     public boolean isCyclic(int V, int[][] edges) {
         
