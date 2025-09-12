@@ -1,0 +1,47 @@
+
+
+class Solution {
+    public boolean isCyclic(int V, int[][] edges) {
+        
+        List<List<Integer>> adj = new ArrayList<>();
+        for (int i = 0; i < V; i++) {
+            adj.add(new ArrayList<>());
+        }
+
+        for (int[] edge : edges) {
+            int u = edge[0];
+            int v = edge[1];
+            adj.get(u).add(v);
+        }
+        
+        int[] vis = new int[V];
+        Arrays.fill(vis, 0);
+        
+        int[] visPath = new int[V];
+        Arrays.fill(visPath, 0);
+        
+        for(int i = 0; i <  V; i++){
+            if(vis[i] == 0){
+                if(dfs(i, vis, visPath, adj) == true) return true;
+            }
+        }
+        return false;
+        
+    }
+    
+    boolean dfs(int node, int[] vis, int[] visPath, List<List<Integer>> adj){
+        vis[node] = 1;
+        visPath[node] = 1;
+        
+        for(int it : adj.get(node)){
+            if(vis[it] == 0){
+                if(dfs(it, vis, visPath, adj) == true) return true;
+            }
+            else if(visPath[it] == 1) return true;
+            // "We reached a node that is already in the current DFS path → cycle exists."
+        }
+        visPath[node] = 0;
+        
+        return false;
+    }
+}
